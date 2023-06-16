@@ -1,0 +1,134 @@
+[
+    {
+        "sessionImage": "https://img.freepik.com/free-vector/hand-drawn-english-book-background_23-2149483336.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/closeup-portrait-caucasian-happy-teacher-glasses_74855-9736.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "BackFoot Landing MasterClass",
+        "coachName": "Bret Lee",
+        "coachEmail": "lee@bretlee.com",
+        "availableSeats": 15,
+        "studentNumber": 10,
+        "price": 20,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-vector/students-characters-learning-spanish-foreign-language-course_87771-10536.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/closeup-portrait-caucasian-happy-teacher-glasses_74855-9736.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Spanish Beginner",
+        "coachName": "John Doe",
+        "coachEmail": "john.doe@example.com",
+        "availableSeats": 12,
+        "studentNumber": 11,
+        "price": 25,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/francais-lettering-pink-background_23-2148293418.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/closeup-portrait-caucasian-happy-teacher-glasses_74855-9736.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "French Grammar",
+        "coachName": "John Doe",
+        "coachEmail": "john.doe@example.com",
+        "availableSeats": 10,
+        "studentNumber": 16,
+        "price": 30,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/learn-german-language-online-education-concept_53876-133891.jpg?size=626&ext=jpg&ga=GA1.2.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/businesswoman-posing-with-notebook-white-wall_114579-65365.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "German Vocabulary",
+        "coachName": "Emily Brown",
+        "coachEmail": "emily.brown@example.com",
+        "availableSeats": 20,
+        "studentNumber": 13,
+        "price": 15,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/woman-drawing-oriental-symbols_1122-1515.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/pleased-young-businessman-wearing-glasses-holding-book-isolated-white-background_141793-63613.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Chinese Characters",
+        "coachName": "Michael Davis",
+        "coachEmail": "michael.davis@example.com",
+        "availableSeats": 15,
+        "studentNumber": 18,
+        "price": 22,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/learn-italian-language-online-education-concept_53876-137599.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/pleased-young-businessman-wearing-glasses-holding-book-isolated-white-background_141793-63613.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Italian Pronunciation",
+        "coachName": "Michael Davis",
+        "coachEmail": "michael.davis@example.com",
+        "availableSeats": 10,
+        "studentNumber": 17,
+        "price": 20,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/man-practicing-japanese-handwriting-with-assortment-tools_23-2149124217.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/guy-learning_1098-13103.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Japanese Kanji",
+        "coachName": "Daniel Lee",
+        "coachEmail": "daniel.lee@example.com",
+        "availableSeats": 16,
+        "studentNumber": 20,
+        "price": 18,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/learn-portuguese-language-online-education-concept_53876-147978.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/responsible-student_23-2147650755.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Portuguese Conversational",
+        "coachName": "Emma Thompson",
+        "coachEmail": "emma.thompson@example.com",
+        "availableSeats": 14,
+        "studentNumber": 18,
+        "price": 20,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/medium-shot-girl-listening-music_23-2149438419.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/closeup-portrait-caucasian-happy-teacher-glasses_74855-9736.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Korean Beginner",
+        "coachName": "John Doe",
+        "coachEmail": "john.doe@example.com",
+        "availableSeats": 15,
+        "studentNumber": 6,
+        "price": 20,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/female-student-sitting-desk_23-2147844944.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/impressed-young-pretty-girl-holding-pencil-notebook-isolated-crimson-wall_141793-112294.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Russian Grammar",
+        "coachName": "Olivia Wilson",
+        "coachEmail": "olivia.wilson@example.com",
+        "availableSeats": 12,
+        "studentNumber": 15,
+        "price": 25,
+        "status": ""
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-vector/spell-english-word-camel_1308-39397.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/portrait-young-man-holding-calculator-showing-winner-gesture-pursing-lips-black-t-shirt-looking-lucky-front-view_176474-64716.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Arabic Vocabulary",
+        "coachName": "James Anderson",
+        "coachEmail": "james.anderson@example.com",
+        "availableSeats": 10,
+        "studentNumber": 13,
+        "price": 30,
+        "status": "approved"
+    },
+    {
+        "sessionImage": "https://img.freepik.com/free-photo/expressive-young-female-posing_140725-127113.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "coachImage": "https://img.freepik.com/free-photo/impressed-young-pretty-girl-holding-pencil-notebook-isolated-crimson-wall_141793-112294.jpg?size=626&ext=jpg&ga=GA1.1.344820293.1680204310&semt=ais",
+        "sessionName": "Swedish Pronunciation",
+        "coachName": "Olivia Wilson",
+        "coachEmail": "olivia.wilson@example.com",
+        "availableSeats": 20,
+        "studentNumber": 7,
+        "price": 15,
+        "status": "approved"
+    }
+]
