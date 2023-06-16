@@ -37,13 +37,16 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
+  useNewUrlParser:true,
+  useUnifiedTopology:true,
+  maxPoolSize:10,
 });
 
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect((error)=>{
+     client.connect((error)=>{
       if(error){
         console.error(error);
         return;
@@ -60,17 +63,14 @@ async function run() {
   const token = jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
   res.send(token);
 })
-
+ 
     // all Coaches 
     app.get('/allcoaches',async(req,res)=>{
-      
-      const result = await CoachesSessionCollection.toArray();
-      res.send(result);
       
     })
     // all session
     app.get('/session',async(req,res)=>{
-      const result=await CoachesSessionCollection.toArray();
+      const result=await CoachesSessionCollection.find().toArray();
       res.send(result);
     })
 
