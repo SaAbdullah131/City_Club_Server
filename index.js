@@ -64,7 +64,45 @@ async function run() {
   res.send(token);
 })
  
-    // all Coaches 
+// ------------------- adminVerify --------------
+  const adminVerify = async(req,res,next)=>{
+    const email = req.decoded.email;
+    const query = {email:email}
+    const user = await UserCollection.findOne(query);
+    if(user?.role !=='admin'){
+      return res.status(403).send({error:true,message:'message forbidden'});
+    }
+    next();
+  }
+
+// -------------------------- coaches verify ----------------
+const coachesVerify = async(req,res,next)=>{
+    const email = req.decoded.email;
+    const query ={email:email};
+    const user = await UserCollection.findOne(query);
+    if(user?.role !=='coaches'){
+      return res.status(403).send({error:true,message:'message forbidden'});
+    }
+    next();
+}
+//------------------ user as a admin ---------
+app.get('/users',verifyJWT,adminVerify,async(req,res)=>{
+  const result = await UserCollection.find().toArray();
+  res.send(result);
+})
+// ------------------ new user posted in mongodb ---------
+app.post('/users',async(req,res)=>{
+  const user = req.body;
+  const query = {email:user.email};
+  const existUser = await UserCollection.findOne(query);
+  if(existUser) {
+    return res.send({message:'already have an user'});
+  }
+  const result = await UserCollection.insertOne(user);
+  res.send(result);
+  
+})
+    // -------------------- all Coaches ------------------ 
     app.get('/allcoaches',async(req,res)=>{
       
     })
