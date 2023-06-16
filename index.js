@@ -68,6 +68,17 @@ async function run() {
       res.send(result);
       
     })
+    // all session
+    app.get('/session',async(req,res)=>{
+      const result=await CoachesSessionCollection.toArray();
+      res.send(result);
+    })
+
+    // top student section 
+    app.get('/top-student',async(req,res)=>{
+      const result = await topStudentCollection.find().toArray();
+      res.send(result); 
+    })
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
