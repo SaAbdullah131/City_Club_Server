@@ -119,7 +119,7 @@ app.get('/user/set-admin/:id',async(req,res)=>{
   const id = req.params.id;
   const filter = {_id: new ObjectId(id)};
   const updateDoc = {
-    $set={
+    $set:{
       role:'admin'
     },
   };
@@ -213,15 +213,42 @@ app.get('/popular-session',async(req,res)=>{
     res.send(result);
   })
     // all session
-    app.get('/session',async(req,res)=>{
+    app.get('/session',verifyJWT,adminVerify,async(req,res)=>{
       const result=await CoachesSessionCollection.find().toArray();
       res.send(result);
     })
+// student all added session 
+app.get('/my-session',async(req,res)=>{
+  const email = req.query.email;
+  const query = {coachEmail:email};
+  const element = {sessionImage:1,sessionName:1,studentNumber:1,availableSeats:1,status:1,feedback:1};
+  const result = await CoachesSessionCollection.find(query).peoject(element).toArray();
+  res.send(result);
+
+})
 // add a session
  app.post('/session',verifyJWT,coachesVerify, async(req,res)=>{
     const newSession = req.body;
     const result = await CoachesSessionCollection.insertOne(newSession);
     res.send(result);
+})
+// update a session
+app.patch('/session/:id',async(req,res)=>{
+  const id= req.params.id;
+  const data = req.body;
+  const filter = {_id: new ObjectId(id)};
+  const options = {upsert:true};
+  const updateDoc = {
+    $set:{
+      sessionName:data.sessionName,
+      sessionImage:data.sessionImage,
+      availableSeats:data.availableSeats,
+      price:data.price
+    }
+  }
+  const result = await CoachesSessionCollection.updateOne(filter,updateDoc,options);
+  res.send(result);
+
 })
     // top student section 
     app.get('/top-student',async(req,res)=>{
