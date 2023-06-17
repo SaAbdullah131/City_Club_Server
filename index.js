@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion,ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -101,17 +101,42 @@ app.post('/users',async(req,res)=>{
   const result = await UserCollection.insertOne(user);
   res.send(result);
 })
-
-app.post('/users/admin/:email',async(req,res)=>{
+// check whether user admin or not..
+app.post('/users/admin/:email',verifyJWT,async(req,res)=>{
   const email = req.params.email;
   if(req.decoded.email !== email) {
     res.send({admin:false})
   }
   const query = {email:email};
-  const user = await CoachesSessionCollection.findOne(query);
+  const user = await UserCollection.findOne(query);
   const result = {admin:user?.role === 'admin'};
   res.send(result);
-  
+
+})
+// check user coach for not..
+app.get('/users/coach/:email',verifyJWT,async(req,res)=>{
+      const email = req.params.email;
+      if(req.decoded.email !== email){
+          res.send({admin:false});
+      }
+
+      const query = {email:email};
+      const user = await UserCollection.findOne(query);
+      const result = {admin:user?.role === 'coach'};
+      res.send(result);
+})
+
+// update any user as admin
+app.patch('/users/coach/:id',async(req,res)=>{
+    const id = req.params.id;
+    const filter = {_id: new ObjectId(id)};
+    const updateDocument = {
+      $set:{
+        role:'coach'
+      },
+    };
+    const result = await UserCollection.updateOne(filter,updateDocument);
+    res.send(result);
 })
     // -------------------- all Coaches ------------------ 
     app.get('/allcoaches',async(req,res)=>{
