@@ -250,6 +250,37 @@ app.patch('/session/:id',async(req,res)=>{
   res.send(result);
 
 })
+// feedback 
+app.patch('/session-feedback/:id',verifyJWT,adminVerify,async(req,res)=>{
+  const feedback = req.body.feedback;
+  const id = req.params.id;
+  const filter = {_id:new ObjectId(id)};
+  const options = {upsert:true};
+  const updateDoc = {
+    $set:{
+      feedback:feedback
+    }
+  }
+  const result = await CoachesSessionCollection.updateOne(filter,updateDoc,options);
+  res.send(result);
+})
+// update session status
+app.patch('/session-status/:id',verifyJWT,adminVerify,async(req,res)=>{
+  const status = req.body.status;
+  const id = req.params.id;
+  const filter = {_id:new ObjectId(id)};
+  const options = {upsert:true};
+  const updateDoc = {
+    $set:{
+      status:status
+    }
+  }
+  const result = await CoachesSessionCollection.updateOne(filter,updateDoc,options);
+  res.send(result);
+
+})
+
+
     // top student section 
     app.get('/top-student',async(req,res)=>{
       const result = await topStudentCollection.find().toArray();
