@@ -138,8 +138,38 @@ app.patch('/users/coach/:id',async(req,res)=>{
     const result = await UserCollection.updateOne(filter,updateDocument);
     res.send(result);
 })
+
+// selected Session of student
+app.get('/select',verifyJWT,async(req,res)=>{
+  const email = req.query.email;
+  if(!email) {
+    res.send([]);
+  }
+  const decodedEmail = req.decoded.email;
+  if(email !==decodedEmail) {
+    return res.status(402).send({error:true,message:'access forbidden'});
+  }
+
+  const query = {email:email};
+  const result = await selectedSessionCollection.find(query).toArray();
+  res.send(result);
+
+})
+app.post('/select',async(req,res)=>{
+    const selected = req.body;
+    const result = await selectedSessionCollection.insertOne(selected);
+    res.send(result);
+
+})
+
+app.delete('/select/:id',async(req,res)=>{
+  const id = req.params.id;
+  const query = {_id: new ObjectId(id)};
+  const result = await selectedSessionCollection.deleteOne(query);
+  res.send(result);
+})
     // -------------------- all Coaches ------------------ 
-    app.get('/allcoaches',async(req,res)=>{
+    app.get('/allcoach',async(req,res)=>{
       const aggregation = [
         {$group:{_id:'$coachEmail',document:{$first:'$$ROOT'}}},
         {$replaceRoot:{newRoot:'$document'}}
