@@ -121,7 +121,6 @@ app.get('/users/coach/:email',verifyJWT,async(req,res)=>{
       if(req.decoded.email !== email){
           res.send({admin:false});
       }
-
       const query = {email:email};
       const user = await UserCollection.findOne(query);
       const result = {admin:user?.role === 'coach'};
@@ -207,7 +206,7 @@ app.get('/popular-session',async(req,res)=>{
       res.send(result);
     })
 // add a session
-app.post('/session',async(req,res)=>{
+ app.post('/session',verifyJWT,coachesVerify, async(req,res)=>{
     const newSession = req.body;
     const result = await CoachesSessionCollection.insertOne(newSession);
     res.send(result);
