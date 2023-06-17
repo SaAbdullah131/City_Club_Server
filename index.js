@@ -60,7 +60,7 @@ async function run() {
  // --------------------- jwt token post --------------
  app.post('/jwt',(req,res)=>{
   const user = req.body;
-  const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
+  const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,{expiresIn:'12h'})
   console.log(token);
   res.send({token});
 })
@@ -113,6 +113,18 @@ app.post('/users/admin/:email',verifyJWT,async(req,res)=>{
   const user = await UserCollection.findOne(query);
   const result = {admin:user?.role === 'admin'};
   res.send(result);
+
+})
+app.get('/user/set-admin/:id',async(req,res)=>{
+  const id = req.params.id;
+  const filter = {_id: new ObjectId(id)};
+  const updateDoc = {
+    $set={
+      role:'admin'
+    },
+  };
+const result = await UserCollection.updateOne(filter,updateDoc);
+res.send(result);
 
 })
 // check user coach for not..
