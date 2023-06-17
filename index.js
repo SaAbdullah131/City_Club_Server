@@ -168,17 +168,27 @@ app.delete('/select/:id',async(req,res)=>{
   const result = await selectedSessionCollection.deleteOne(query);
   res.send(result);
 })
-    // -------------------- all Coaches ------------------ 
-    app.get('/allcoach',async(req,res)=>{
-      const aggregation = [
-        {$group:{_id:'$coachEmail',document:{$first:'$$ROOT'}}},
-        {$replaceRoot:{newRoot:'$document'}}
-      ]
-      const sort = {studentNumber:-1,coachName:1,coachEmail:1}
-      const result = await CoachesSessionCollection.aggregate(aggregation).sort(sort).project(fields).toArray();
-      res.send(result);
 
-    })
+// popular Session 
+app.get('/popular-session',async(req,res)=>{
+  const query = {status:"approved"};
+  const sort = {studentNumber:1};
+  const element = {sessionImage:1,sessionName:1,price:1,studentNumber:1};
+  const result = await CoachesSessionCollection.find(query).sort(sort).project(element).limit(6).toArray();
+  res.send(result);
+})
+
+// popular Coach
+  app.get('/popular-coach',async(req,res)=>{
+    const aggregation = [
+      {$group: {_id:'$coachEmail',document:{$first:'$$ROOT'}}},
+      {$replaceRoot:{newRoot:'$document'}}
+    ]
+    sort = {studentNumber:1};
+    const element = {coachImage:1,coachName:1,studentNumber:1}
+    const result = await CoachesSessionCollection.aggregate(aggregation).sort(sort).project(element).limit(6).toArray();
+    res.send(result);
+  })
     // all session
     app.get('/session',async(req,res)=>{
       const result=await CoachesSessionCollection.find().toArray();
