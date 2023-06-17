@@ -60,8 +60,9 @@ async function run() {
  // --------------------- jwt token post --------------
  app.post('/jwt',(req,res)=>{
   const user = req.body;
-  const token = jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
-  res.send(token);
+  const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
+  console.log(token);
+  res.send({token});
 })
  
 // ------------------- adminVerify --------------
@@ -80,7 +81,7 @@ const coachesVerify = async(req,res,next)=>{
     const email = req.decoded.email;
     const query ={email:email};
     const user = await UserCollection.findOne(query);
-    if(user?.role !=='coaches'){
+    if(user?.role !=='coach'){
       return res.status(403).send({error:true,message:'message forbidden'});
     }
     next();
@@ -101,6 +102,7 @@ app.post('/users',async(req,res)=>{
   const result = await UserCollection.insertOne(user);
   res.send(result);
 })
+
 // check whether user admin or not..
 app.post('/users/admin/:email',verifyJWT,async(req,res)=>{
   const email = req.params.email;
@@ -189,17 +191,36 @@ app.get('/popular-session',async(req,res)=>{
     const result = await CoachesSessionCollection.aggregate(aggregation).sort(sort).project(element).limit(6).toArray();
     res.send(result);
   })
+  app.get('/allcoach',async(req,res)=>{
+    const aggregation = [
+      {$group:{_id:'$coachEmail',document:{$first:'$$ROOT'}}},
+      {$replaceRoot:{newRoot:'$document'}}
+    ]
+    const sort = {studentNumber:1};
+    const element= {coachImage:1,coachName:1,coachEmail:1}
+    const result = await CoachesSessionCollection.aggregate(aggregation).sort(sort).project(element).toArray();
+    res.send(result);
+  })
     // all session
     app.get('/session',async(req,res)=>{
       const result=await CoachesSessionCollection.find().toArray();
       res.send(result);
     })
-
+// add a session
+app.post('/session',async(req,res)=>{
+    const newSession = req.body;
+    const result = await CoachesSessionCollection.insertOne(newSession);
+    res.send(result);
+})
     // top student section 
     app.get('/top-student',async(req,res)=>{
       const result = await topStudentCollection.find().toArray();
       res.send(result); 
     })
+
+
+
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
